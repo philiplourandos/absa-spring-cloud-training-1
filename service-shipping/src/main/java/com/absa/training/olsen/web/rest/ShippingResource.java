@@ -26,7 +26,7 @@ public class ShippingResource {
     }
     
     @RequestMapping(value = "/dispatch/{customerId}/{orderId}")
-    public ResponseEntity dispatch(@PathVariable("customerId") String customerId, @PathVariable String orderIds) {
+    public ResponseEntity dispatch(@PathVariable("customerId") String customerId, @PathVariable("orderId") String orderIds) {
         final String shippingAddress = customerClient.getAddress(Long.valueOf(customerId));
         
         final Optional<String> trackingCode = courrier.pickup(orderIds, shippingAddress);
