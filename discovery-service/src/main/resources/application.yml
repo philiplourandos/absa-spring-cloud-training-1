@@ -1,0 +1,17 @@
+
+spring:
+  boot:
+    admin:
+      context-path: /admin
+
+  application:
+    name: discovery-service
+eureka:
+  client:
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+server:
+  port: 8761
+
+
