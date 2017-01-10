@@ -2,9 +2,7 @@ package com.absa.training.olsen.persistence.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -12,6 +10,7 @@ import java.time.LocalDateTime;
 @Data
 public class Order {
 
+    @Id @GeneratedValue
     Long id;
     LocalDateTime orderDateTime;
     String customerName;
