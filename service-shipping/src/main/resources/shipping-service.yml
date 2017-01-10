@@ -1,15 +1,3 @@
 spring:
     application:
         name: shipping-service
-        
-eureka:
-    client:
-        registerWithEureka: true
-        fetchRegistry: true
-        serviceUrl:
-            defaultZone: http://localhost:1111/eureka
-    instance:
-        preferIpAddress: true
-        instanceId: ${spring.application.name}:${spring.application.instance_id}:${random.value}
-        metadataMap:
-            instanceId: ${spring.application.name}:${spring.application.instance_id}:{random.value}
