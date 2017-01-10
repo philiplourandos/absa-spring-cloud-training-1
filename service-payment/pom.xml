@@ -17,6 +17,7 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
         <version>Camden.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <properties>
