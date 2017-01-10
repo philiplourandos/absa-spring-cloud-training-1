@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author abpl245
  */
 @RestController
-@RequestMapping(path = "/shipping")
+@RequestMapping("/shipping")
 public class ShippingResource {
     
     private final CourrierService courrier;
@@ -25,7 +25,7 @@ public class ShippingResource {
         this.customerClient = customerClient;
     }
     
-    @RequestMapping(path = "/dispatch/{customerId}/{orderId}")
+    @RequestMapping(value = "/dispatch/{customerId}/{orderId}")
     public ResponseEntity dispatch(@PathVariable("customerId") String customerId, @PathVariable String orderIds) {
         final String shippingAddress = customerClient.getAddress(Long.valueOf(customerId));
         
