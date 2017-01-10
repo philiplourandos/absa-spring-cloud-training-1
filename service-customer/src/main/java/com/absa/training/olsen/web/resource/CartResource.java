@@ -27,6 +27,16 @@ public class CartResource {
         this.cartService.addProductToCart(customerId, command);
     }
 
+    @DeleteMapping("{customerId}/delete/{productId}")
+    public void removeFromCart(@PathVariable Long customerId, @PathVariable Long productId) {
+        this.cartService.deleteProductFromCart(customerId, productId);
+    }
+
+    @GetMapping("{customerId}/checkout")
+    public Long checkout(@PathVariable Long customerId) {
+        return this.cartService.checkout(customerId);
+    }
+
 
 
 }
