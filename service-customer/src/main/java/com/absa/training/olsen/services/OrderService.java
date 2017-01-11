@@ -1,8 +1,7 @@
 package com.absa.training.olsen.services;
 
-import com.absa.training.olsen.web.commands.CreateOrderCommand;
+import com.absa.training.olsen.web.model.OrderCreateRequest;
 import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -10,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface OrderService {
 
     @RequestMapping(value = "orders", method = RequestMethod.POST)
-    Long createOrder(CreateOrderCommand command);
+    Long createOrder(OrderCreateRequest command);
 
 }

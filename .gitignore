@@ -12,3 +12,7 @@
 hs_err_pid*
 /service-shipping/target/
 /service-customer/target/
+
+**/target
+.idea
+*.iml

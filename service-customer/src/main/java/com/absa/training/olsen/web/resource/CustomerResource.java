@@ -2,9 +2,10 @@ package com.absa.training.olsen.web.resource;
 
 import com.absa.training.olsen.persistence.model.Customer;
 import com.absa.training.olsen.services.CustomerService;
-import com.absa.training.olsen.web.commands.RegisterCustomerCommand;
+import com.absa.training.olsen.web.model.CustomerRegisterRequest;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class CustomerResource {
 //    }
 
     @PostMapping("register")
-    public Customer register(@RequestBody RegisterCustomerCommand command) {
+    public Customer register(@Valid @RequestBody CustomerRegisterRequest command) {
         return this.customerService.register(command);
     }
 

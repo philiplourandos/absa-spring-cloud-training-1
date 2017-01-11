@@ -2,9 +2,11 @@ package com.absa.training.olsen.web.resource;
 
 import com.absa.training.olsen.persistence.model.Cart;
 import com.absa.training.olsen.services.CartService;
-import com.absa.training.olsen.web.commands.AddProductToCartCommand;
+import com.absa.training.olsen.web.model.CartAddProductRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/cart")
@@ -23,7 +25,7 @@ public class CartResource {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("{customerId}/add")
-    public void addToCart(@PathVariable Long customerId, @RequestBody AddProductToCartCommand command) {
+    public void addToCart(@PathVariable Long customerId,  @Valid @RequestBody CartAddProductRequest command) {
         this.cartService.addProductToCart(customerId, command);
     }
 

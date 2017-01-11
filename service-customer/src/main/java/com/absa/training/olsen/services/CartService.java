@@ -5,8 +5,8 @@ import com.absa.training.olsen.persistence.model.CartItem;
 import com.absa.training.olsen.persistence.model.Customer;
 import com.absa.training.olsen.persistence.repository.CartRepository;
 import com.absa.training.olsen.persistence.repository.CustomerRepository;
-import com.absa.training.olsen.web.commands.AddProductToCartCommand;
-import com.absa.training.olsen.web.commands.CreateOrderCommand;
+import com.absa.training.olsen.web.model.CartAddProductRequest;
+import com.absa.training.olsen.web.model.OrderCreateRequest;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -42,7 +42,7 @@ public class CartService {
         return cart;
     }
 
-    public Boolean addProductToCart(Long customerId, AddProductToCartCommand command) {
+    public Boolean addProductToCart(Long customerId, CartAddProductRequest command) {
         Cart cart = getOrCreateCart(customerId);
 
         CartItem newCartItem = new CartItem();
@@ -80,9 +80,9 @@ public class CartService {
     public Long checkout(Long customerId) {
         Cart cart = getOrCreateCart(customerId);
 
-        if (cart.getItems().size() > 0) {
+        if (!cart.getItems().isEmpty()) {
             Customer customer = customerRepository.getOne(customerId);
-            Long orderId = orderService.createOrder(new CreateOrderCommand(customer.getFirstName(), customer.getLastName(), customer.getEmailAddress(), new ArrayList<Long>()));
+            Long orderId = orderService.createOrder(new OrderCreateRequest(customer.getFirstName(), customer.getLastName(), customer.getEmailAddress(), new ArrayList<Long>()));
             return orderId;
         } else {
             throw new IllegalArgumentException("Cart is empty, cannot continue with checkout");
